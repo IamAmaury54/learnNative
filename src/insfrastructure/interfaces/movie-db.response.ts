@@ -1,7 +1,7 @@
 export interface NowPlayingResponse {
     dates:         Dates;
     page:          number;
-    results:       Movie[];
+    results:       Result[];
     total_pages:   number;
     total_results: number;
 }
@@ -11,7 +11,7 @@ export interface Dates {
     minimum: Date;
 }
 
- interface Movie {
+ export interface Result {
     adult:             boolean;
     backdrop_path:     string;
     genre_ids:         number[];
