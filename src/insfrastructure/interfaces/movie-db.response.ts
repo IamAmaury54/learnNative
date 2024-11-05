@@ -6,6 +6,21 @@ export interface NowPlayingResponse {
     total_results: number;
 }
 
+
+export interface PopularDBMoviesResponse {
+    page:          number;
+    results:       Result[];
+    total_pages:   number;
+    total_results: number;
+}
+
+export interface TopRatedResponse {
+    page:          number;
+    results:       Result[];
+    total_pages:   number;
+    total_results: number;
+}
+
 export interface Dates {
     maximum: Date;
     minimum: Date;
@@ -27,3 +42,5 @@ export interface Dates {
     vote_average:      number;
     vote_count:        number;
 }
+
+
