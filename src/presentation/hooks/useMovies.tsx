@@ -10,6 +10,7 @@ export const useMovies = () => {
      const [nowPlaging, setNowPlaging] = useState<Movie[]>([]);
      const [popular, setPopular] = useState<Movie[]>([]);
      const [topRate, setTopRate] = useState<Movie[]>([]);
+     const [upComing, setUpComing] = useState<Movie[]>([]);
 
 
      useEffect(() => {
@@ -21,19 +22,18 @@ export const useMovies = () => {
         const nowPlayingPromise = UseCases.moviesNowPlayingUseCase(movieDBFetcher);
         const popularPromise = UseCases.moviesPopularUseCase(movieDBFetcher);
         const topRatePromise = UseCases.topRateUseCase(movieDBFetcher);
+        const upcomingPromise = UseCases.upcomingMoviesUseCase(movieDBFetcher);
 
 
-        const [nowPlayingMovies, popularMovies, topRateMovies] = await
-        Promise.all([nowPlayingPromise, popularPromise, topRatePromise]);
+        const [nowPlayingMovies, popularMovies, topRateMovies, upcomingMovies] = await
+        Promise.all([nowPlayingPromise, popularPromise, topRatePromise, upcomingPromise]);
 
         setNowPlaging(nowPlayingMovies);
         setPopular(popularMovies);
         setTopRate(topRateMovies);
-
+        setUpComing(upcomingMovies);
 
         setIsLoading(false);
-
-        console.log(topRateMovies);
 
      };
 
@@ -42,6 +42,7 @@ export const useMovies = () => {
       nowPlaging,
       popular,
       topRate,
+      upComing,
     };
 
 };

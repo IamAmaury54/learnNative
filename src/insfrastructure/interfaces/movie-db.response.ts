@@ -14,6 +14,14 @@ export interface PopularDBMoviesResponse {
     total_results: number;
 }
 
+export interface UpcomingResponse {
+    dates:         Dates;
+    page:          number;
+    results:       Result[];
+    total_pages:   number;
+    total_results: number;
+}
+
 export interface TopRatedResponse {
     page:          number;
     results:       Result[];
@@ -42,5 +50,4 @@ export interface Dates {
     vote_average:      number;
     vote_count:        number;
 }
-
 
