@@ -43,7 +43,7 @@ export default function HorizontalCarousel({movies, title, loadNextPage}: Props)
       <FlatList
        data={movies}
        renderItem={({item}) => <MoviesPoster movie={item} width={140} height={200}  />}
-       keyExtractor={(item) => item.id.toString()}
+       keyExtractor={(item, index) => `${item.id}-${index})`}
        horizontal
        showsHorizontalScrollIndicator={false}
        onScroll={onScroll}
