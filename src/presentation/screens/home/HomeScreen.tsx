@@ -1,14 +1,37 @@
-import { View, Text } from 'react-native';
 import React from 'react';
+import { Text, View } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import HorizontalCarousel from '../../components/movies/HorizontalCarousel';
+import PosterCarousel from '../../components/movies/PosterCarousel';
 import { useMovies } from '../../hooks/useMovies';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export const HomeScreen = () => {
 
-  const {} = useMovies();
+  const {top} = useSafeAreaInsets();
+
+  const {isLoading, nowPlaging, popular, topRate, upComing} = useMovies();
+
+  if(isLoading) {
+    return <Text>Loading...</Text>
+  }
 
   return (
-    <View className="bg-red-500 w-full">
-      <Text className="text-white">HomeScreens</Text>
-    </View>
+    <ScrollView >
+      <View style={{marginTop: top + 20, paddingBottom: 20}}>
+        {/* Principal  */}
+        <PosterCarousel movies={nowPlaging} />
+
+        {/* Popular */}
+        <HorizontalCarousel movies={popular} title="Popular" loadNextPage={() => console.log('fin')} />
+
+         {/* TopRate */}
+         <HorizontalCarousel movies={topRate} title="Top Rate" />
+
+           {/* UpComing */}
+           <HorizontalCarousel movies={upComing} title="Upcoming" />
+
+      </View>
+    </ScrollView>
   );
 };

@@ -1,15 +1,19 @@
 import 'react-native-gesture-handler';
-import {View} from 'react-native';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import { HomeScreen } from './src/presentation/screens/home/HomeScreen';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {HomeScreen} from './src/presentation/screens/home/HomeScreen';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import { Navigation } from './src/presentation/navigation/Navigation';
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <View className="bg-blue-500 h-screen w-full">
-       <HomeScreen />
-      </View>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{flex: 1}}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Navigation />
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </GestureHandlerRootView>
   );
 }

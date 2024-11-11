@@ -4,7 +4,6 @@ import { MovieMapper } from '../../../insfrastructure/mappers/movie.mapper';
 import { Movie } from '../../entities/movie.entity';
 
 export const moviesPopularUseCase = async (fetcher: HttpAdapter) : Promise <Movie[]> => {
-
     try {
         const nowPlaying = await fetcher.get<PopularDBMoviesResponse>('/popular');
         return nowPlaying.results.map( MovieMapper.fromMovieResultToEntity);

@@ -34,7 +34,6 @@ export const useMovies = () => {
         setUpComing(upcomingMovies);
 
         setIsLoading(false);
-
      };
 
     return {
